@@ -3,4 +3,14 @@
     <string name="textViewName">Họ và tên:</string>
     <string name="textViewPhoneNumber">Số điện thoại:</string>
     <string name="textViewEmail">Email:</string>
+    <string name="textViewTitle">QUẢN LÝ SINH VIÊN</string>
+    <string name="textViewTitleCreateStudent">TẠO MỚI SINH VIÊN</string>
+    <string name="buttonListStudent">Danh sách sinh viên</string>
+    <string name="buttonCreateStudent">Tạo mới sinh viên</string>
+    <string name="buttonEditStudent">Cập nhật thông tin sinh viên</string>
+    <string name="buttonDeleteStudent">Xóa sinh viên</string>
+    <string name="buttonCreate">Tạo mới</string>
+    <string name="buttonEdit">Cập nhật</string>
+    <string name="buttonDelete">Xóa</string>
+    <string name="buttonBack">Quay lại</string>
 </resources>

@@ -2,6 +2,7 @@ package com.example.demosqllite.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,11 +27,19 @@ public class CreateActivity extends AppCompatActivity {
         editTextPhoneNumber = findViewById(R.id.editTextPhoneNumber);
         editTextEmail = findViewById(R.id.editTextEmail);
         Button buttonSave = findViewById(R.id.buttonSave);
+        Button buttonBack = findViewById(R.id.buttonBack);
         studentDao = new StudentDao(this);
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 createStudent();
+            }
+        });
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CreateActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }
