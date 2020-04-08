@@ -1,4 +1,4 @@
-package com.example.demosqllite;
+package com.example.demosqllite.model;
 
 import lombok.Data;
 

@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.demosqllite.Student;
+import com.example.demosqllite.model.Student;
 import com.example.demosqllite.config.StaticVariable;
 import com.example.demosqllite.sqlite.IStudentDao;
 import com.example.demosqllite.sqlite.helper.DBHelper;
