@@ -11,5 +11,6 @@ public class StaticVariable {
     public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME +
             " (" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + NAME + " VARCHAR(255) ,"
             + PHONE_NUMBER + " VARCHAR(225) ," + EMAIL + " VARCHAR(255));";
+    public static final String SELECT_ALL_STUDENTS = "SELECT * FROM student";
     public static final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
 }

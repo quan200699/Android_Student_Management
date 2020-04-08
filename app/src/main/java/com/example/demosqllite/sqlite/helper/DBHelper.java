@@ -1,4 +1,4 @@
-package com.example.demosqllite.sqlite;
+package com.example.demosqllite.sqlite.helper;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

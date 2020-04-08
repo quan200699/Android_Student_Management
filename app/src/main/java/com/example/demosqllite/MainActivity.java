@@ -8,13 +8,12 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.demosqllite.sqlite.IStudentDao;
-import com.example.demosqllite.sqlite.StudentDao;
+import com.example.demosqllite.sqlite.impl.StudentDao;
 
 public class MainActivity extends AppCompatActivity {
     private EditText editTextName;
     private EditText editTextPhoneNumber;
     private EditText editTextEmail;
-    private Button buttonSave;
     private IStudentDao studentDao;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         editTextName = findViewById(R.id.editTextName);
         editTextPhoneNumber = findViewById(R.id.editTextPhoneNumber);
         editTextEmail = findViewById(R.id.editTextEmail);
-        buttonSave = findViewById(R.id.buttonSave);
+        Button buttonSave = findViewById(R.id.buttonSave);
         studentDao = new StudentDao(this);
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
