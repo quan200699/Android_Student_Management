@@ -10,14 +10,12 @@
         android:id="@+id/buttonSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="204dp"
-        android:layout_marginRight="204dp"
+        android:layout_marginEnd="192dp"
+        android:layout_marginRight="192dp"
         android:layout_marginBottom="316dp"
         android:text="Tạo mới"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
         android:id="@+id/editTextPhoneNumber"
@@ -52,8 +50,10 @@
         android:layout_marginRight="68dp"
         android:ems="10"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSave"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPhoneNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPhoneNumber"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textViewName"

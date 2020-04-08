@@ -4,13 +4,13 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface IGeneralDao<T> {
-    T insert(T t) throws SQLException;
+    T insert(T t);
 
     T findById(int id);
 
     List<T> findAll();
 
-    boolean removeById(int id) throws SQLException;
+    boolean removeById(int id);
 
-    boolean updateById(T t) throws SQLException;
+    boolean updateById(T t);
 }
