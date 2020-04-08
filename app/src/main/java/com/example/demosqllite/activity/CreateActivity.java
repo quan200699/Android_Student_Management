@@ -50,5 +50,12 @@ public class CreateActivity extends AppCompatActivity {
         String email = editTextEmail.getText().toString();
         Student student = new Student(name, phoneNumber, email);
         studentDao.insert(student);
+        resetField();
+    }
+
+    private void resetField() {
+        editTextName.setText("");
+        editTextPhoneNumber.setText("");
+        editTextEmail.setText("");
     }
 }
