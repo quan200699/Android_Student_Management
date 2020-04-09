@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.example.demosqllite.R;
@@ -24,6 +25,7 @@ public class ListStudentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_student);
         ListView listView = findViewById(R.id.listViewStudent);
         IStudentDao studentDao = new StudentDao(this);
+        ImageButton buttonBack = findViewById(R.id.buttonBack);
         final List<Student> students = studentDao.findAll();
         ListStudentAdapter adapter = new ListStudentAdapter(ListStudentActivity.this, R.layout.activity_student_row, students);
         listView.setAdapter(adapter);
@@ -35,6 +37,13 @@ public class ListStudentActivity extends AppCompatActivity {
                 intent.putExtra("studentName", students.get(position).getName());
                 intent.putExtra("studentPhoneNumber", students.get(position).getPhoneNumber());
                 intent.putExtra("studentEmail", students.get(position).getEmail());
+                startActivity(intent);
+            }
+        });
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ListStudentActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
