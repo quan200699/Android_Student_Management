@@ -12,5 +12,5 @@ public interface IGeneralDao<T> {
 
     boolean removeById(int id);
 
-    boolean updateById(T t);
+    boolean updateById(int id, T t);
 }

@@ -10,7 +10,7 @@
         android:id="@+id/textViewStudentInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="80dp"
         android:text="@string/textViewTitleStudentDetail"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,7 +25,7 @@
         android:layout_marginStart="72dp"
         android:layout_marginLeft="72dp"
         android:text="@string/textViewName"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textViewStudentName"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editTextStudentName"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -35,28 +35,35 @@
         android:layout_marginStart="72dp"
         android:layout_marginLeft="72dp"
         android:text="@string/textViewPhoneNumber"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textViewStudentPhone"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editTextStudentPhone"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textViewStudentPhone"
+    <EditText
+        android:id="@+id/editTextStudentPhone"
         android:layout_width="193dp"
-        android:layout_height="20dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
         android:layout_marginBottom="44dp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewStudentEmail"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/editTextStudentEmail"
         app:layout_constraintStart_toEndOf="@+id/textView5" />
 
-    <TextView
-        android:id="@+id/textViewStudentName"
+    <EditText
+        android:id="@+id/editTextStudentName"
         android:layout_width="193dp"
-        android:layout_height="20dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginLeft="44dp"
+        android:layout_marginTop="60dp"
         android:layout_marginBottom="44dp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewStudentPhone"
-        app:layout_constraintStart_toEndOf="@+id/textView3" />
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/editTextStudentPhone"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStudentInfo"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView7"
@@ -65,16 +72,18 @@
         android:layout_marginStart="72dp"
         android:layout_marginLeft="72dp"
         android:text="@string/textViewEmail"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textViewStudentEmail"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editTextStudentEmail"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textViewStudentEmail"
+    <EditText
+        android:id="@+id/editTextStudentEmail"
         android:layout_width="193dp"
-        android:layout_height="20dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
         android:layout_marginLeft="72dp"
         android:layout_marginBottom="44dp"
+        android:ems="10"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/buttonDelete"
         app:layout_constraintStart_toEndOf="@+id/textView7" />
 
@@ -82,9 +91,9 @@
         android:id="@+id/buttonDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="96dp"
-        android:layout_marginRight="96dp"
-        android:layout_marginBottom="200dp"
+        android:layout_marginEnd="84dp"
+        android:layout_marginRight="84dp"
+        android:layout_marginBottom="152dp"
         android:text="@string/buttonDelete"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -93,11 +102,11 @@
         android:id="@+id/buttonEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="200dp"
+        android:layout_marginBottom="152dp"
         android:text="@string/buttonEdit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonDelete"
-        app:layout_constraintHorizontal_bias="0.548"
+        app:layout_constraintHorizontal_bias="0.581"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
@@ -105,13 +114,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:layout_marginBottom="84dp"
+        android:layout_marginBottom="40dp"
         android:src="@drawable/back"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintHorizontal_bias="0.045"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewStudentInfo"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.544" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

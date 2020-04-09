@@ -75,12 +75,20 @@ public class StudentDao implements IStudentDao {
     @Override
     public boolean removeById(int id) {
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
-        int result = sqLiteDatabase.delete(StaticVariable.TABLE_NAME, "id = ? ", new String[]{id + ""});
+        String[] arguments = new String[]{id + ""};
+        int result = sqLiteDatabase.delete(StaticVariable.TABLE_NAME, "id = ? ", arguments);
         return result != 0;
     }
 
     @Override
-    public boolean updateById(Student student) {
-        return false;
+    public boolean updateById(int id, Student student) {
+        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(StaticVariable.NAME, student.getName());
+        contentValues.put(StaticVariable.PHONE_NUMBER, student.getPhoneNumber());
+        contentValues.put(StaticVariable.EMAIL, student.getEmail());
+        String[] arguments = new String[]{id + ""};
+        int result = sqLiteDatabase.update(StaticVariable.TABLE_NAME, contentValues, StaticVariable.ID + "= ?", arguments);
+        return result != 0;
     }
 }

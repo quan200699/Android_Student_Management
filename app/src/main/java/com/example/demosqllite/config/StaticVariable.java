@@ -16,5 +16,6 @@ public class StaticVariable {
     public static final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
     public static final String MESSAGE_CREATE_SUCCESS = "Tạo mới thành công";
     public static final String MESSAGE_DELETE_SUCCESS = "Xóa thành công";
+    public static final String MESSAGE_UPDATE_SUCCESS = "Cập nhật thành công";
     public static final String MESSAGE_FAIL = "Có lỗi xảy ra";
 }
