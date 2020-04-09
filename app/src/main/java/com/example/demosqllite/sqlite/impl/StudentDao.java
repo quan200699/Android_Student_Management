@@ -36,7 +36,22 @@ public class StudentDao implements IStudentDao {
 
     @Override
     public Student findById(int id) {
-        return null;
+        Student student = new Student();
+        SQLiteDatabase sqLiteDatabase = this.dbHelper.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(StaticVariable.SELECT_STUDENT + id, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            String name = cursor.getString(cursor.getColumnIndex(StaticVariable.NAME));
+            String phoneNumber = cursor.getString(cursor.getColumnIndex(StaticVariable.PHONE_NUMBER));
+            String email = cursor.getString(cursor.getColumnIndex(StaticVariable.EMAIL));
+            student.setId(id);
+            student.setName(name);
+            student.setPhoneNumber(phoneNumber);
+            student.setEmail(email);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return student;
     }
 
     @Override
@@ -46,10 +61,11 @@ public class StudentDao implements IStudentDao {
         Cursor res = sqLiteDatabase.rawQuery(StaticVariable.SELECT_ALL_STUDENTS, null);
         res.moveToFirst();
         while (!res.isAfterLast()) {
+            int id = res.getInt(res.getColumnIndex(StaticVariable.ID));
             String name = res.getString(res.getColumnIndex(StaticVariable.NAME));
             String phoneNumber = res.getString(res.getColumnIndex(StaticVariable.PHONE_NUMBER));
             String email = res.getString(res.getColumnIndex(StaticVariable.EMAIL));
-            students.add(new Student(name, phoneNumber, email));
+            students.add(new Student(id, name, phoneNumber, email));
             res.moveToNext();
         }
         res.close();
@@ -58,7 +74,9 @@ public class StudentDao implements IStudentDao {
 
     @Override
     public boolean removeById(int id) {
-        return false;
+        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
+        int result = sqLiteDatabase.delete(StaticVariable.TABLE_NAME, "id = ? ", new String[]{id + ""});
+        return result != 0;
     }
 
     @Override

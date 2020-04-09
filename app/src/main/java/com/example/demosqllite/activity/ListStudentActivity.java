@@ -31,6 +31,7 @@ public class ListStudentActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ListStudentActivity.this, StudentActivity.class);
+                intent.putExtra("studentId", students.get(position).getId());
                 intent.putExtra("studentName", students.get(position).getName());
                 intent.putExtra("studentPhoneNumber", students.get(position).getPhoneNumber());
                 intent.putExtra("studentEmail", students.get(position).getEmail());

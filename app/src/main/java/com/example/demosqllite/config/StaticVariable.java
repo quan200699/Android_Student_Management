@@ -12,7 +12,9 @@ public class StaticVariable {
             " (" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + NAME + " VARCHAR(255) ,"
             + PHONE_NUMBER + " VARCHAR(225) ," + EMAIL + " VARCHAR(255));";
     public static final String SELECT_ALL_STUDENTS = "SELECT * FROM student";
+    public static final String SELECT_STUDENT = "SELECT * FROM student WHERE ID=";
     public static final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
     public static final String MESSAGE_CREATE_SUCCESS = "Tạo mới thành công";
+    public static final String MESSAGE_DELETE_SUCCESS = "Xóa thành công";
     public static final String MESSAGE_FAIL = "Có lỗi xảy ra";
 }
