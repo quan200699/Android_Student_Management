@@ -13,4 +13,6 @@ public class StaticVariable {
             + PHONE_NUMBER + " VARCHAR(225) ," + EMAIL + " VARCHAR(255));";
     public static final String SELECT_ALL_STUDENTS = "SELECT * FROM student";
     public static final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
+    public static final String MESSAGE_CREATE_SUCCESS = "Tạo mới thành công";
+    public static final String MESSAGE_FAIL = "Có lỗi xảy ra";
 }

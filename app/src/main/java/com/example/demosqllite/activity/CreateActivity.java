@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.demosqllite.R;
+import com.example.demosqllite.config.StaticVariable;
 import com.example.demosqllite.model.Student;
 import com.example.demosqllite.sqlite.IStudentDao;
 import com.example.demosqllite.sqlite.impl.StudentDao;
@@ -49,7 +51,12 @@ public class CreateActivity extends AppCompatActivity {
         String phoneNumber = editTextPhoneNumber.getText().toString();
         String email = editTextEmail.getText().toString();
         Student student = new Student(name, phoneNumber, email);
-        studentDao.insert(student);
+        student = studentDao.insert(student);
+        if (student != null) {
+            Toast.makeText(this, StaticVariable.MESSAGE_CREATE_SUCCESS, Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, StaticVariable.MESSAGE_FAIL, Toast.LENGTH_SHORT).show();
+        }
         resetField();
     }
 
