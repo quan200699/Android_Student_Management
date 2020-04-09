@@ -22,7 +22,7 @@ public class ListStudentAdapter extends ArrayAdapter<Student> {
         View view = convertView;
         if (view == null) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            view =  inflater.inflate(R.layout.activity_student, null);
+            view =  inflater.inflate(R.layout.activity_student_row, null);
         }
         Student student = getItem(position);
         if (student != null) {

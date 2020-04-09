@@ -10,8 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.StudentActivity"></activity>
-        <activity android:name=".activity.ListActivity" />
-        <activity android:name=".activity.CreateActivity" />
+        <activity android:name=".activity.StudentRowActivity" />
+        <activity android:name=".activity.ListStudentActivity" />
+        <activity android:name=".activity.CreateStudentActivity" />
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

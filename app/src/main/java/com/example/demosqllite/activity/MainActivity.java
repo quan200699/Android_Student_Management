@@ -16,8 +16,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button buttonCreate = findViewById(R.id.buttonCreate);
         Button buttonList = findViewById(R.id.buttonList);
-        onClickEvent(buttonCreate, CreateActivity.class);
-        onClickEvent(buttonList, ListActivity.class);
+        onClickEvent(buttonCreate, CreateStudentActivity.class);
+        onClickEvent(buttonList, ListStudentActivity.class);
     }
 
     private void onClickEvent(Button button, final Class<?> activity) {

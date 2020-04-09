@@ -15,7 +15,7 @@ import com.example.demosqllite.model.Student;
 import com.example.demosqllite.sqlite.IStudentDao;
 import com.example.demosqllite.sqlite.impl.StudentDao;
 
-public class CreateActivity extends AppCompatActivity {
+public class CreateStudentActivity extends AppCompatActivity {
     private EditText editTextName;
     private EditText editTextPhoneNumber;
     private EditText editTextEmail;
@@ -24,7 +24,7 @@ public class CreateActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create);
+        setContentView(R.layout.activity_create_student);
         editTextName = findViewById(R.id.editTextName);
         editTextPhoneNumber = findViewById(R.id.editTextPhoneNumber);
         editTextEmail = findViewById(R.id.editTextEmail);
@@ -40,7 +40,7 @@ public class CreateActivity extends AppCompatActivity {
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CreateActivity.this, MainActivity.class);
+                Intent intent = new Intent(CreateStudentActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
