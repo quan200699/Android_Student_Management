@@ -27,7 +27,7 @@ public class StudentDao implements IStudentDao {
         contentValues.put(StaticVariable.NAME, student.getName());
         contentValues.put(StaticVariable.PHONE_NUMBER, student.getPhoneNumber());
         contentValues.put(StaticVariable.EMAIL, student.getEmail());
-        long result = sqLiteDatabase.insert(StaticVariable.TABLE_NAME, null, contentValues);
+        long result = sqLiteDatabase.insert(StaticVariable.TABLE_STUDENT, null, contentValues);
         if (result == -1) {
             return null;
         }
@@ -76,7 +76,7 @@ public class StudentDao implements IStudentDao {
     public boolean removeById(int id) {
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         String[] arguments = new String[]{id + ""};
-        int result = sqLiteDatabase.delete(StaticVariable.TABLE_NAME, "id = ? ", arguments);
+        int result = sqLiteDatabase.delete(StaticVariable.TABLE_STUDENT, "id = ? ", arguments);
         return result != 0;
     }
 
@@ -88,7 +88,7 @@ public class StudentDao implements IStudentDao {
         contentValues.put(StaticVariable.PHONE_NUMBER, student.getPhoneNumber());
         contentValues.put(StaticVariable.EMAIL, student.getEmail());
         String[] arguments = new String[]{id + ""};
-        int result = sqLiteDatabase.update(StaticVariable.TABLE_NAME, contentValues, StaticVariable.ID + "= ?", arguments);
+        int result = sqLiteDatabase.update(StaticVariable.TABLE_STUDENT, contentValues, StaticVariable.ID + "= ?", arguments);
         return result != 0;
     }
 }

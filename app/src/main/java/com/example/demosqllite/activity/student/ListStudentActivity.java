@@ -1,4 +1,4 @@
-package com.example.demosqllite.activity;
+package com.example.demosqllite.activity.student;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.example.demosqllite.R;
+import com.example.demosqllite.activity.MainActivity;
 import com.example.demosqllite.adapter.ListStudentAdapter;
 import com.example.demosqllite.model.Student;
 import com.example.demosqllite.sqlite.IStudentDao;

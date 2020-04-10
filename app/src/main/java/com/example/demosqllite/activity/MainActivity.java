@@ -8,19 +8,18 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.demosqllite.R;
+import com.example.demosqllite.activity.student.ListStudentActivity;
 
 public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button buttonCreate = findViewById(R.id.buttonCreate);
-        Button buttonList = findViewById(R.id.buttonList);
-        onClickEvent(buttonCreate, CreateStudentActivity.class);
+        Button buttonList = findViewById(R.id.buttonListStudent);
         onClickEvent(buttonList, ListStudentActivity.class);
     }
 
-    private void onClickEvent(Button button, final Class<?> activity) {
+    public void onClickEvent(Button button, final Class<?> activity) {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

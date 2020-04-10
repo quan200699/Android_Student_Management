@@ -5,10 +5,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import static com.example.demosqllite.config.StaticVariable.CREATE_TABLE;
+import static com.example.demosqllite.config.StaticVariable.CREATE_TABLE_COURSE;
+import static com.example.demosqllite.config.StaticVariable.CREATE_TABLE_STUDENT;
 import static com.example.demosqllite.config.StaticVariable.DATABASE_NAME;
 import static com.example.demosqllite.config.StaticVariable.DATABASE_Version;
-import static com.example.demosqllite.config.StaticVariable.DROP_TABLE;
+import static com.example.demosqllite.config.StaticVariable.DROP_TABLE_COURSE;
+import static com.example.demosqllite.config.StaticVariable.DROP_TABLE_STUDENT;
 
 
 public class DBHelper extends SQLiteOpenHelper {
@@ -23,7 +25,8 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         try {
-            db.execSQL(CREATE_TABLE);
+            db.execSQL(CREATE_TABLE_STUDENT);
+            db.execSQL(CREATE_TABLE_COURSE);
         } catch (Exception e) {
             Log.e("TEXT", "" + e);
         }
@@ -32,7 +35,8 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         try {
-            db.execSQL(DROP_TABLE);
+            db.execSQL(DROP_TABLE_STUDENT);
+            db.execSQL(DROP_TABLE_COURSE);
             onCreate(db);
         } catch (Exception e) {
             Log.e("TEXT", "" + e);

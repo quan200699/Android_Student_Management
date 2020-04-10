@@ -1,4 +1,4 @@
-package com.example.demosqllite.activity;
+package com.example.demosqllite.activity.student;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;

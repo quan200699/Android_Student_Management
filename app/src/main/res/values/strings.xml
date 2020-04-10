@@ -10,10 +10,11 @@
     <string name="textViewTitleDeleteStudent">XÓA SINH VIÊN</string>
     <string name="textViewTitleStudentDetail">THÔNG TIN SINH VIÊN</string>
     <string name="buttonListStudent">Danh sách sinh viên</string>
+    <string name="buttonListClass">Danh sách lớp học</string>
     <string name="buttonCreateStudent">Tạo mới sinh viên</string>
     <string name="buttonEditStudent">Cập nhật thông tin sinh viên</string>
     <string name="buttonDeleteStudent">Xóa sinh viên</string>
-    <string name="buttonCreate">Tạo mới</string>
+    <string name="buttonCreate">Thêm mới</string>
     <string name="buttonEdit">Cập nhật</string>
     <string name="buttonDelete">Xóa</string>
     <string name="buttonBack">Quay lại</string>
