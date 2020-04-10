@@ -9,10 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.CourseActivity"></activity>
-        <activity android:name=".activity.CreateCourseActivity" />
-        <activity android:name=".activity.CourseRowActivity" />
-        <activity android:name=".activity.ListCourseActivity" />
+        <activity android:name=".activity.course.CourseActivity"></activity>
+        <activity android:name=".activity.course.CreateCourseActivity" />
+        <activity android:name=".activity.course.CourseRowActivity" />
+        <activity android:name=".activity.course.ListCourseActivity" />
         <activity android:name=".activity.student.StudentActivity" />
         <activity android:name=".activity.student.StudentRowActivity" />
         <activity android:name=".activity.student.ListStudentActivity" />

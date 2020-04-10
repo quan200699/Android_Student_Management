@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.demosqllite.R;
+import com.example.demosqllite.activity.course.ListCourseActivity;
 import com.example.demosqllite.activity.student.ListStudentActivity;
 
 public class MainActivity extends AppCompatActivity {

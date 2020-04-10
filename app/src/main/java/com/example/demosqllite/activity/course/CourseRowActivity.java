@@ -1,4 +1,4 @@
-package com.example.demosqllite.activity;
+package com.example.demosqllite.activity.course;
 
 import androidx.appcompat.app.AppCompatActivity;
 
