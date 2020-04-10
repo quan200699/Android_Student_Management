@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.demosqllite.R;
 import com.example.demosqllite.config.StaticVariable;
+import com.example.demosqllite.model.Course;
 import com.example.demosqllite.sqlite.ICourseDao;
 import com.example.demosqllite.sqlite.impl.CourseDao;
 
@@ -46,21 +47,19 @@ public class CourseActivity extends AppCompatActivity {
                     createPopup(bundle);
                 }
             });
-//            buttonEdit.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    int id = bundle.getInt("studentId");
-//                    String name = editTextStudentName.getText().toString();
-//                    String phoneNumber = editTextStudentPhoneNumber.getText().toString();
-//                    String email = editTextStudentEmail.getText().toString();
-//                    Student student = new Student(id, name, phoneNumber, email);
-//                    if (studentDao.updateById(id, student)) {
-//                        Toast.makeText(getApplicationContext(), StaticVariable.MESSAGE_UPDATE_SUCCESS, Toast.LENGTH_SHORT).show();
-//                    } else {
-//                        Toast.makeText(getApplicationContext(), StaticVariable.MESSAGE_FAIL, Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//            });
+            buttonEdit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int id = bundle.getInt("courseId");
+                    String name = editTextCourseName.getText().toString();
+                    Course course = new Course(id, name);
+                    if (courseDao.updateById(id, course)) {
+                        Toast.makeText(getApplicationContext(), StaticVariable.MESSAGE_UPDATE_SUCCESS, Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), StaticVariable.MESSAGE_FAIL, Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
         }
     }
     private void createPopup(final Bundle bundle) {
