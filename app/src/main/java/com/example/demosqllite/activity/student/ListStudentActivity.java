@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -26,6 +27,7 @@ public class ListStudentActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.listViewStudent);
         IStudentDao studentDao = new StudentDao(this);
         ImageButton buttonBack = findViewById(R.id.buttonBack);
+        Button buttonCreate = findViewById(R.id.buttonCreateStudent);
         final List<Student> students = studentDao.findAll();
         ListStudentAdapter adapter = new ListStudentAdapter(ListStudentActivity.this, R.layout.activity_student_row, students);
         listView.setAdapter(adapter);
@@ -44,6 +46,17 @@ public class ListStudentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ListStudentActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        onClickEvent(buttonCreate, CreateStudentActivity.class);
+    }
+
+    private void onClickEvent(Button button, final Class<?> activity) {
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ListStudentActivity.this, activity);
                 startActivity(intent);
             }
         });

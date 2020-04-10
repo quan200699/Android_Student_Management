@@ -7,43 +7,43 @@
     tools:context=".activity.MainActivity">
 
     <Button
-        android:id="@+id/buttonList"
+        android:id="@+id/buttonListClass"
         android:layout_width="242dp"
         android:layout_height="52dp"
         android:layout_marginStart="84dp"
         android:layout_marginLeft="84dp"
-        android:layout_marginBottom="52dp"
-        android:text="@string/buttonListStudent"
-        app:layout_constraintBottom_toTopOf="@+id/buttonCreate"
+        android:layout_marginTop="96dp"
+        android:text="@string/buttonListClass"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonListStudent" />
 
     <Button
-        android:id="@+id/buttonCreate"
+        android:id="@+id/buttonListStudent"
         android:layout_width="242dp"
         android:layout_height="52dp"
-        android:layout_marginEnd="84dp"
-        android:layout_marginRight="84dp"
-        android:layout_marginBottom="300dp"
-        android:text="@string/buttonCreateStudent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="84dp"
+        android:layout_marginLeft="84dp"
+        android:layout_marginTop="88dp"
+        android:text="@string/buttonListStudent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.988"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
 
     <TextView
         android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="132dp"
         android:layout_marginEnd="124dp"
         android:layout_marginRight="124dp"
         android:text="@string/textViewTitle"
         android:textSize="18dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonList"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.403" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

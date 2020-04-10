@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.ListStudentActivity">
+    tools:context=".activity.student.ListStudentActivity">
 
     <ListView
         android:id="@+id/listViewStudent"
@@ -31,7 +31,7 @@
         android:textSize="18dp"
         app:layout_constraintBottom_toTopOf="@+id/listViewStudent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,4 +45,16 @@
         app:layout_constraintBottom_toTopOf="@+id/listViewStudent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/back" />
+
+    <Button
+        android:id="@+id/buttonCreateStudent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="228dp"
+        android:layout_marginLeft="228dp"
+        android:text="@string/buttonCreate"
+        app:layout_constraintBottom_toTopOf="@+id/listViewStudent"
+        app:layout_constraintStart_toEndOf="@+id/buttonBack"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
