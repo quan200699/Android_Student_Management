@@ -34,7 +34,17 @@ public class CourseDao implements ICourseDao {
 
     @Override
     public Course findById(int id) {
-        return null;
+        Course course = new Course();
+        SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(StaticVariable.SELECT_COURSE + id, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            String name = cursor.getString(cursor.getColumnIndex(StaticVariable.NAME));
+            course.setId(id);
+            course.setName(name);
+        }
+        cursor.close();
+        return course;
     }
 
     @Override
@@ -55,11 +65,19 @@ public class CourseDao implements ICourseDao {
 
     @Override
     public boolean removeById(int id) {
-        return false;
+        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
+        String[] arguments = new String[]{id + ""};
+        int result = sqLiteDatabase.delete(StaticVariable.TABLE_COURSE, "id = ?", arguments);
+        return result != 0;
     }
 
     @Override
     public boolean updateById(int id, Course course) {
-        return false;
+        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(StaticVariable.NAME, course.getName());
+        String[] arguments = new String[]{id + ""};
+        int result = sqLiteDatabase.update(StaticVariable.TABLE_COURSE, contentValues, "id = ?", arguments);
+        return result != 0;
     }
 }
