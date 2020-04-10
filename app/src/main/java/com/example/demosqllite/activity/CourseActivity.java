@@ -1,7 +1,9 @@
 package com.example.demosqllite.activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -38,12 +40,12 @@ public class CourseActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-//            buttonDelete.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    createPopup(bundle);
-//                }
-//            });
+            buttonDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    createPopup(bundle);
+                }
+            });
 //            buttonEdit.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View v) {
@@ -60,5 +62,31 @@ public class CourseActivity extends AppCompatActivity {
 //                }
 //            });
         }
+    }
+    private void createPopup(final Bundle bundle) {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(CourseActivity.this);
+        builder.setTitle("Xóa thông tin lớp học");
+        builder.setMessage("Bạn có chắc muốn xóa thông tin lớp này?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                int id = bundle.getInt("courseId");
+                if (courseDao.removeById(id)) {
+                    Toast.makeText(getApplicationContext(), StaticVariable.MESSAGE_DELETE_SUCCESS, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), StaticVariable.MESSAGE_FAIL, Toast.LENGTH_SHORT).show();
+                }
+                Intent intent = new Intent(CourseActivity.this, ListCourseActivity.class);
+                startActivity(intent);
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(getApplicationContext(), "Cancel", Toast.LENGTH_SHORT).show();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }
