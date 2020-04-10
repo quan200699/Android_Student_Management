@@ -40,16 +40,16 @@ public class CourseDao implements ICourseDao {
     @Override
     public List<Course> findAll() {
         List<Course> courses = new ArrayList<>();
-        SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery(StaticVariable.SELECT_ALL_COURSES, null);
-        cursor.moveToFirst();
-        while (!cursor.moveToNext()) {
-            int id = cursor.getInt(cursor.getColumnIndex(StaticVariable.ID));
-            String name = cursor.getString(cursor.getColumnIndex(StaticVariable.NAME));
+        SQLiteDatabase sqLiteDatabase = this.dbHelper.getReadableDatabase();
+        Cursor res = sqLiteDatabase.rawQuery(StaticVariable.SELECT_ALL_COURSES, null);
+        res.moveToFirst();
+        while (!res.isAfterLast()) {
+            int id = res.getInt(res.getColumnIndex(StaticVariable.ID));
+            String name = res.getString(res.getColumnIndex(StaticVariable.NAME));
             courses.add(new Course(id, name));
-            cursor.moveToNext();
+            res.moveToNext();
         }
-        cursor.close();
+        res.close();
         return courses;
     }
 
