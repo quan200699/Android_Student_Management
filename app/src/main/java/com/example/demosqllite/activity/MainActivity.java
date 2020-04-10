@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.demosqllite.ListCourseActivity;
 import com.example.demosqllite.R;
 import com.example.demosqllite.activity.student.ListStudentActivity;
 
@@ -15,8 +16,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button buttonList = findViewById(R.id.buttonListStudent);
-        onClickEvent(buttonList, ListStudentActivity.class);
+        Button buttonListStudent = findViewById(R.id.buttonListStudent);
+        Button buttonListCourse = findViewById(R.id.buttonListClass);
+        onClickEvent(buttonListStudent, ListStudentActivity.class);
+        onClickEvent(buttonListCourse, ListCourseActivity.class);
     }
 
     public void onClickEvent(Button button, final Class<?> activity) {

@@ -5,7 +5,8 @@
     <string name="textViewEmail">Email:</string>
     <string name="textViewTitle">QUẢN LÝ SINH VIÊN</string>
     <string name="textViewTitleCreateStudent">TẠO MỚI SINH VIÊN</string>
-    <string name="textViewTitleListStudent">DANH SACH SINH VIÊN</string>
+    <string name="textViewTitleListStudent">DANH SÁCH SINH VIÊN</string>
+    <string name="textViewTitleListCourse">DANH SÁCH LỚP HỌC</string>
     <string name="textViewTitleEditStudent">CẬP NHẬT THÔNG TIN SINH VIÊN</string>
     <string name="textViewTitleDeleteStudent">XÓA SINH VIÊN</string>
     <string name="textViewTitleStudentDetail">THÔNG TIN SINH VIÊN</string>

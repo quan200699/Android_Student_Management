@@ -1,6 +1,7 @@
 package com.example.demosqllite;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 
 public class ListCourseActivity extends AppCompatActivity {
