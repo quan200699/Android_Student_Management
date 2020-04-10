@@ -37,5 +37,16 @@ public class ListCourseActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        onClickEvent(buttonCreate, CreateCourseActivity.class);
+
+    }
+     private void onClickEvent(Button button, final Class<?> activity) {
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ListCourseActivity.this, activity);
+                startActivity(intent);
+            }
+        });
     }
 }

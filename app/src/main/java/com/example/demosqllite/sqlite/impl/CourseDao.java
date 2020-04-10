@@ -25,7 +25,7 @@ public class CourseDao implements ICourseDao {
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(StaticVariable.NAME, course.getName());
-        long result = sqLiteDatabase.insert(StaticVariable.CREATE_TABLE_COURSE, null, contentValues);
+        long result = sqLiteDatabase.insert(StaticVariable.TABLE_COURSE, null, contentValues);
         if (result == -1) {
             return null;
         }
