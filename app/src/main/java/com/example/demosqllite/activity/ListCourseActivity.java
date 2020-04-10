@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -30,6 +31,15 @@ public class ListCourseActivity extends AppCompatActivity {
         final List<Course> courses = courseDao.findAll();
         ListCourseAdapter adapter = new ListCourseAdapter(ListCourseActivity.this, R.layout.activity_course_row, courses);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(ListCourseActivity.this, CourseActivity.class);
+                intent.putExtra("courseId", courses.get(position).getId());
+                intent.putExtra("courseName", courses.get(position).getName());
+                startActivity(intent);
+            }
+        });
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
