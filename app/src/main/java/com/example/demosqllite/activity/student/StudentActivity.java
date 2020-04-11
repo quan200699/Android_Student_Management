@@ -33,20 +33,14 @@ public class StudentActivity extends AppCompatActivity {
     private Spinner spinnerCourse;
     private IStudentDao studentDao;
     private ICourseDao courseDao;
-
+    private ImageButton buttonBack;
+    private Button buttonDelete;
+    private Button buttonEdit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student);
-        editTextStudentName = findViewById(R.id.editTextStudentName);
-        editTextStudentPhoneNumber = findViewById(R.id.editTextStudentPhone);
-        editTextStudentEmail = findViewById(R.id.editTextStudentEmail);
-        spinnerCourse = findViewById(R.id.spinnerCourse);
-        studentDao = new StudentDao(this);
-        courseDao = new CourseDao(this);
-        ImageButton buttonBack = findViewById(R.id.buttonBack);
-        Button buttonDelete = findViewById(R.id.buttonDelete);
-        Button buttonEdit = findViewById(R.id.buttonEdit);
+        init();
         List<Course> courses = getAllCourses();
         List<String> courseNames = addCourseNameToList(courses);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, courseNames);
@@ -92,6 +86,18 @@ public class StudentActivity extends AppCompatActivity {
             });
         }
 
+    }
+
+    private void init() {
+        editTextStudentName = findViewById(R.id.editTextStudentName);
+        editTextStudentPhoneNumber = findViewById(R.id.editTextStudentPhone);
+        editTextStudentEmail = findViewById(R.id.editTextStudentEmail);
+        spinnerCourse = findViewById(R.id.spinnerCourse);
+        studentDao = new StudentDao(this);
+        courseDao = new CourseDao(this);
+        buttonBack = findViewById(R.id.buttonBack);
+        buttonDelete = findViewById(R.id.buttonDelete);
+        buttonEdit = findViewById(R.id.buttonEdit);
     }
 
     private void createPopup(final Bundle bundle) {
