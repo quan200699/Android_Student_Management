@@ -5,21 +5,30 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.demosqllite.R;
 import com.example.demosqllite.config.StaticVariable;
+import com.example.demosqllite.model.Course;
 import com.example.demosqllite.model.Student;
+import com.example.demosqllite.sqlite.ICourseDao;
 import com.example.demosqllite.sqlite.IStudentDao;
+import com.example.demosqllite.sqlite.impl.CourseDao;
 import com.example.demosqllite.sqlite.impl.StudentDao;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CreateStudentActivity extends AppCompatActivity {
     private EditText editTextName;
     private EditText editTextPhoneNumber;
     private EditText editTextEmail;
     private IStudentDao studentDao;
+    private ICourseDao courseDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +39,13 @@ public class CreateStudentActivity extends AppCompatActivity {
         editTextEmail = findViewById(R.id.editTextEmail);
         Button buttonSave = findViewById(R.id.buttonSave);
         Button buttonBack = findViewById(R.id.buttonBack);
+        Spinner spinnerCourse = findViewById(R.id.spinnerCourse);
         studentDao = new StudentDao(this);
+        courseDao = new CourseDao(this);
+        List<Course> courses = getAllCourses();
+        List<String> courseNames = addCourseNameToList(courses);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, courseNames);
+        spinnerCourse.setAdapter(adapter);
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,6 +59,18 @@ public class CreateStudentActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private List<String> addCourseNameToList(List<Course> courses) {
+        List<String> courseNames = new ArrayList<>();
+        for (Course course : courses) {
+            courseNames.add(course.getName());
+        }
+        return courseNames;
+    }
+
+    private List<Course> getAllCourses() {
+        return courseDao.findAll();
     }
 
     private void createStudent() {
