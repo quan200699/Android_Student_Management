@@ -14,6 +14,7 @@
     <string name="textViewTitleStudentDetail">THÔNG TIN SINH VIÊN</string>
     <string name="textViewTitleCourseDetail">THÔNG TIN LỚP HỌC</string>
     <string name="buttonListStudent">Danh sách sinh viên</string>
+    <string name="buttonListStudentByCourse">Danh sách sinh viên của lớp</string>
     <string name="buttonListClass">Danh sách lớp học</string>
     <string name="buttonCreateStudent">Tạo mới sinh viên</string>
     <string name="buttonEditStudent">Cập nhật thông tin sinh viên</string>

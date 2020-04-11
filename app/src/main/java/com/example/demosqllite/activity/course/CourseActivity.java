@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.demosqllite.R;
+import com.example.demosqllite.activity.student.ListStudentByCourseActivity;
 import com.example.demosqllite.model.Course;
 import com.example.demosqllite.sqlite.ICourseDao;
 import com.example.demosqllite.sqlite.impl.CourseDao;
@@ -22,19 +23,21 @@ import static com.example.demosqllite.config.StaticVariable.*;
 public class CourseActivity extends AppCompatActivity {
     private EditText editTextCourseName;
     private ICourseDao courseDao;
+    private Button buttonDelete;
+    private Button buttonEdit;
+    private Button buttonListStudentByCourse;
+    private ImageButton buttonBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course);
-        editTextCourseName = findViewById(R.id.editTextCourseName);
-        courseDao = new CourseDao(this);
-        ImageButton buttonBack = findViewById(R.id.buttonBack);
-        Button buttonDelete = findViewById(R.id.buttonDelete);
-        Button buttonEdit = findViewById(R.id.buttonEdit);
+        init();
         final Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            editTextCourseName.setText(bundle.getString("courseName"));
+            final int courseId = bundle.getInt("courseId");
+            final String courseName = bundle.getString("courseName");
+            editTextCourseName.setText(courseName);
             buttonBack.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -51,18 +54,36 @@ public class CourseActivity extends AppCompatActivity {
             buttonEdit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int id = bundle.getInt("courseId");
                     String name = editTextCourseName.getText().toString();
-                    Course course = new Course(id, name);
-                    if (courseDao.updateById(id, course)) {
+                    Course course = new Course(courseId, name);
+                    if (courseDao.updateById(courseId, course)) {
                         Toast.makeText(getApplicationContext(), MESSAGE_UPDATE_SUCCESS, Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(getApplicationContext(), MESSAGE_FAIL, Toast.LENGTH_SHORT).show();
                     }
                 }
             });
+            buttonListStudentByCourse.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(CourseActivity.this, ListStudentByCourseActivity.class);
+                    intent.putExtra("courseId", courseId);
+                    intent.putExtra("courseName", courseName);
+                    startActivity(intent);
+                }
+            });
         }
     }
+
+    private void init() {
+        editTextCourseName = findViewById(R.id.editTextCourseName);
+        buttonBack = findViewById(R.id.buttonBack);
+        buttonDelete = findViewById(R.id.buttonDelete);
+        buttonEdit = findViewById(R.id.buttonEdit);
+        buttonListStudentByCourse = findViewById(R.id.buttonListStudentByCourse);
+        courseDao = new CourseDao(this);
+    }
+
     private void createPopup(final Bundle bundle) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(CourseActivity.this);
         builder.setTitle("Xóa thông tin lớp học");

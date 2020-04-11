@@ -20,19 +20,20 @@ import com.example.demosqllite.sqlite.impl.StudentDao;
 import java.util.List;
 
 public class ListStudentActivity extends AppCompatActivity {
+    private ListView listViewStudent;
+    private IStudentDao studentDao;
+    private ImageButton buttonBack;
+    private Button buttonCreate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_student);
-        ListView listView = findViewById(R.id.listViewStudent);
-        IStudentDao studentDao = new StudentDao(this);
-        ImageButton buttonBack = findViewById(R.id.buttonBack);
-        Button buttonCreate = findViewById(R.id.buttonCreateStudent);
+        init();
         final List<Student> students = studentDao.findAll();
         ListStudentAdapter adapter = new ListStudentAdapter(ListStudentActivity.this, R.layout.activity_student_row, students);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listViewStudent.setAdapter(adapter);
+        listViewStudent.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ListStudentActivity.this, StudentActivity.class);
@@ -52,6 +53,13 @@ public class ListStudentActivity extends AppCompatActivity {
             }
         });
         onClickEvent(buttonCreate, CreateStudentActivity.class);
+    }
+
+    private void init() {
+        listViewStudent = findViewById(R.id.listViewStudent);
+        studentDao = new StudentDao(this);
+        buttonBack = findViewById(R.id.buttonBack);
+        buttonCreate = findViewById(R.id.buttonCreateStudent);
     }
 
     private void onClickEvent(Button button, final Class<?> activity) {
