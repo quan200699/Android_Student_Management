@@ -14,6 +14,12 @@ public class Student {
     private String email;
     private int courseId;
 
+    public Student(String name, String phoneNumber, String email) {
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+    }
+
     public Student(String name, String phoneNumber, String email, int courseId) {
         this.name = name;
         this.phoneNumber = phoneNumber;

@@ -36,12 +36,13 @@ public class CourseDao implements ICourseDao {
     public Course findById(int id) {
         Course course = new Course();
         SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery(StaticVariable.SELECT_COURSE + id, null);
+        Cursor cursor = sqLiteDatabase.rawQuery(StaticVariable.SELECT_COURSE_BY_ID + id, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             String name = cursor.getString(cursor.getColumnIndex(StaticVariable.NAME));
             course.setId(id);
             course.setName(name);
+            cursor.moveToNext();
         }
         cursor.close();
         return course;
@@ -79,5 +80,22 @@ public class CourseDao implements ICourseDao {
         String[] arguments = new String[]{id + ""};
         int result = sqLiteDatabase.update(StaticVariable.TABLE_COURSE, contentValues, "id = ?", arguments);
         return result != 0;
+    }
+
+    @Override
+    public Course findByName(String name) {
+        Course course = new Course();
+        SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
+        String query = StaticVariable.SELECT_COURSE_BY_NAME + "'" + name + "'";
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            int id = cursor.getInt(cursor.getColumnIndex(StaticVariable.ID));
+            course.setId(id);
+            course.setName(name);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return course;
     }
 }

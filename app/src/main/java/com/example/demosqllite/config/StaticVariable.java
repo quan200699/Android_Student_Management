@@ -12,14 +12,15 @@ public class StaticVariable {
     public static final String EMAIL = "email";
     public static final String CREATE_TABLE_STUDENT = "CREATE TABLE " + TABLE_STUDENT +
             " (" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + NAME + " VARCHAR(255) ,"
-            + PHONE_NUMBER + " VARCHAR(225) ," + EMAIL + " VARCHAR(255));";
+            + PHONE_NUMBER + " VARCHAR(225) ," + EMAIL + " VARCHAR(225) ," + COURSE_ID +" INTEGER);";
     public static final String CREATE_TABLE_COURSE = "CREATE TABLE " + TABLE_COURSE +
             " (" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + NAME + " VARCHAR(255));";
     public static final String SELECT_ALL_STUDENTS = "SELECT * FROM " + TABLE_STUDENT;
-    public static final String SELECT_STUDENT = "SELECT * FROM " + TABLE_STUDENT + " WHERE ID=";
+    public static final String SELECT_STUDENT_BY_ID = "SELECT * FROM " + TABLE_STUDENT + " WHERE ID=";
     public static final String DROP_TABLE_STUDENT = "DROP TABLE IF EXISTS " + TABLE_STUDENT;
     public static final String SELECT_ALL_COURSES = "SELECT * FROM " + TABLE_COURSE;
-    public static final String SELECT_COURSE = "SELECT * FROM " + TABLE_COURSE + " WHERE ID=";
+    public static final String SELECT_COURSE_BY_ID = "SELECT * FROM " + TABLE_COURSE + " WHERE ID=";
+    public static final String SELECT_COURSE_BY_NAME = "SELECT * FROM " + TABLE_COURSE + " WHERE NAME = ";
     public static final String DROP_TABLE_COURSE = "DROP TABLE IF EXISTS " + TABLE_COURSE;
     public static final String MESSAGE_CREATE_SUCCESS = "Tạo mới thành công";
     public static final String MESSAGE_DELETE_SUCCESS = "Xóa thành công";

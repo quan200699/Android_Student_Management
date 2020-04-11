@@ -27,6 +27,7 @@ public class CreateStudentActivity extends AppCompatActivity {
     private EditText editTextName;
     private EditText editTextPhoneNumber;
     private EditText editTextEmail;
+    private Spinner spinnerCourse;
     private IStudentDao studentDao;
     private ICourseDao courseDao;
 
@@ -39,7 +40,7 @@ public class CreateStudentActivity extends AppCompatActivity {
         editTextEmail = findViewById(R.id.editTextEmail);
         Button buttonSave = findViewById(R.id.buttonSave);
         Button buttonBack = findViewById(R.id.buttonBack);
-        Spinner spinnerCourse = findViewById(R.id.spinnerCourse);
+        spinnerCourse = findViewById(R.id.spinnerCourse);
         studentDao = new StudentDao(this);
         courseDao = new CourseDao(this);
         List<Course> courses = getAllCourses();
@@ -77,8 +78,12 @@ public class CreateStudentActivity extends AppCompatActivity {
         String name = editTextName.getText().toString();
         String phoneNumber = editTextPhoneNumber.getText().toString();
         String email = editTextEmail.getText().toString();
-        int courseId = 0;
-        Student student = new Student(name, phoneNumber, email, courseId);
+        String courseName = spinnerCourse.getSelectedItem().toString();
+        Student student = new Student(name, phoneNumber, email);
+        Course course = courseDao.findByName(courseName);
+        if (course != null) {
+            student = new Student(name, phoneNumber, email, course.getId());
+        }
         student = studentDao.insert(student);
         if (student != null) {
             Toast.makeText(this, StaticVariable.MESSAGE_CREATE_SUCCESS, Toast.LENGTH_SHORT).show();

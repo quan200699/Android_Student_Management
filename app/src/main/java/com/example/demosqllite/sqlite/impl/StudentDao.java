@@ -39,7 +39,7 @@ public class StudentDao implements IStudentDao {
     public Student findById(int id) {
         Student student = new Student();
         SQLiteDatabase sqLiteDatabase = this.dbHelper.getReadableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery(StaticVariable.SELECT_STUDENT + id, null);
+        Cursor cursor = sqLiteDatabase.rawQuery(StaticVariable.SELECT_STUDENT_BY_ID + id, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             String name = cursor.getString(cursor.getColumnIndex(StaticVariable.NAME));
