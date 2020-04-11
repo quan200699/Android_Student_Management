@@ -10,10 +10,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.demosqllite.R;
-import com.example.demosqllite.config.StaticVariable;
 import com.example.demosqllite.model.Course;
 import com.example.demosqllite.sqlite.ICourseDao;
 import com.example.demosqllite.sqlite.impl.CourseDao;
+
+import static com.example.demosqllite.config.StaticVariable.*;
 
 public class CreateCourseActivity extends AppCompatActivity {
     private EditText editTextName;
@@ -48,9 +49,9 @@ public class CreateCourseActivity extends AppCompatActivity {
         Course course = new Course(name);
         course = courseDao.insert(course);
         if (course != null) {
-            Toast.makeText(this, StaticVariable.MESSAGE_CREATE_SUCCESS, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, MESSAGE_CREATE_SUCCESS, Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, StaticVariable.MESSAGE_FAIL, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, MESSAGE_FAIL, Toast.LENGTH_SHORT).show();
         }
         resetField();
     }

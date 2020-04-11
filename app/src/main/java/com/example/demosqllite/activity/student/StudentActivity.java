@@ -15,7 +15,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.demosqllite.R;
-import com.example.demosqllite.config.StaticVariable;
 import com.example.demosqllite.model.Course;
 import com.example.demosqllite.model.Student;
 import com.example.demosqllite.sqlite.ICourseDao;
@@ -25,6 +24,8 @@ import com.example.demosqllite.sqlite.impl.StudentDao;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.demosqllite.config.StaticVariable.*;
 
 public class StudentActivity extends AppCompatActivity {
     private EditText editTextStudentName;
@@ -78,9 +79,9 @@ public class StudentActivity extends AppCompatActivity {
                         student = new Student(name, phoneNumber, email, course.getId());
                     }
                     if (studentDao.updateById(id, student)) {
-                        Toast.makeText(getApplicationContext(), StaticVariable.MESSAGE_UPDATE_SUCCESS, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), MESSAGE_UPDATE_SUCCESS, Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(getApplicationContext(), StaticVariable.MESSAGE_FAIL, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), MESSAGE_FAIL, Toast.LENGTH_SHORT).show();
                     }
                 }
             });
@@ -109,9 +110,9 @@ public class StudentActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 int id = bundle.getInt("studentId");
                 if (studentDao.removeById(id)) {
-                    Toast.makeText(getApplicationContext(), StaticVariable.MESSAGE_DELETE_SUCCESS, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), MESSAGE_DELETE_SUCCESS, Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), StaticVariable.MESSAGE_FAIL, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), MESSAGE_FAIL, Toast.LENGTH_SHORT).show();
                 }
                 Intent intent = new Intent(StudentActivity.this, ListStudentActivity.class);
                 startActivity(intent);

@@ -13,10 +13,11 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.demosqllite.R;
-import com.example.demosqllite.config.StaticVariable;
 import com.example.demosqllite.model.Course;
 import com.example.demosqllite.sqlite.ICourseDao;
 import com.example.demosqllite.sqlite.impl.CourseDao;
+
+import static com.example.demosqllite.config.StaticVariable.*;
 
 public class CourseActivity extends AppCompatActivity {
     private EditText editTextCourseName;
@@ -54,9 +55,9 @@ public class CourseActivity extends AppCompatActivity {
                     String name = editTextCourseName.getText().toString();
                     Course course = new Course(id, name);
                     if (courseDao.updateById(id, course)) {
-                        Toast.makeText(getApplicationContext(), StaticVariable.MESSAGE_UPDATE_SUCCESS, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), MESSAGE_UPDATE_SUCCESS, Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(getApplicationContext(), StaticVariable.MESSAGE_FAIL, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), MESSAGE_FAIL, Toast.LENGTH_SHORT).show();
                     }
                 }
             });
@@ -71,9 +72,9 @@ public class CourseActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 int id = bundle.getInt("courseId");
                 if (courseDao.removeById(id)) {
-                    Toast.makeText(getApplicationContext(), StaticVariable.MESSAGE_DELETE_SUCCESS, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), MESSAGE_DELETE_SUCCESS, Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), StaticVariable.MESSAGE_FAIL, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), MESSAGE_FAIL, Toast.LENGTH_SHORT).show();
                 }
                 Intent intent = new Intent(CourseActivity.this, ListCourseActivity.class);
                 startActivity(intent);
