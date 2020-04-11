@@ -40,6 +40,7 @@ public class ListStudentActivity extends AppCompatActivity {
                 intent.putExtra("studentName", students.get(position).getName());
                 intent.putExtra("studentPhoneNumber", students.get(position).getPhoneNumber());
                 intent.putExtra("studentEmail", students.get(position).getEmail());
+                intent.putExtra("studentCourse", students.get(position).getCourseId());
                 startActivity(intent);
             }
         });

@@ -64,6 +64,7 @@ public class CreateStudentActivity extends AppCompatActivity {
 
     private List<String> addCourseNameToList(List<Course> courses) {
         List<String> courseNames = new ArrayList<>();
+        courseNames.add("");
         for (Course course : courses) {
             courseNames.add(course.getName());
         }
