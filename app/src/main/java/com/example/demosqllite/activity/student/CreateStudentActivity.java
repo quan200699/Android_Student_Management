@@ -50,7 +50,8 @@ public class CreateStudentActivity extends AppCompatActivity {
         String name = editTextName.getText().toString();
         String phoneNumber = editTextPhoneNumber.getText().toString();
         String email = editTextEmail.getText().toString();
-        Student student = new Student(name, phoneNumber, email);
+        int courseId = 0;
+        Student student = new Student(name, phoneNumber, email, courseId);
         student = studentDao.insert(student);
         if (student != null) {
             Toast.makeText(this, StaticVariable.MESSAGE_CREATE_SUCCESS, Toast.LENGTH_SHORT).show();

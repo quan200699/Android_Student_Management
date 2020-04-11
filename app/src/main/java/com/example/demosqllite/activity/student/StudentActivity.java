@@ -60,7 +60,8 @@ public class StudentActivity extends AppCompatActivity {
                     String name = editTextStudentName.getText().toString();
                     String phoneNumber = editTextStudentPhoneNumber.getText().toString();
                     String email = editTextStudentEmail.getText().toString();
-                    Student student = new Student(id, name, phoneNumber, email);
+                    int courseId = 0;
+                    Student student = new Student(id, name, phoneNumber, email, courseId);
                     if (studentDao.updateById(id, student)) {
                         Toast.makeText(getApplicationContext(), StaticVariable.MESSAGE_UPDATE_SUCCESS, Toast.LENGTH_SHORT).show();
                     } else {

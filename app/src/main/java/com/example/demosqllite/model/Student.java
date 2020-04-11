@@ -12,10 +12,12 @@ public class Student {
     private String name;
     private String phoneNumber;
     private String email;
+    private int courseId;
 
-    public Student(String name, String phoneNumber, String email) {
+    public Student(String name, String phoneNumber, String email, int courseId) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
+        this.courseId = courseId;
     }
 }
