@@ -35,26 +35,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/buttonBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/listViewStudent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/back" />
-
     <Button
         android:id="@+id/buttonCreateStudent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="228dp"
-        android:layout_marginLeft="228dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
         android:text="@string/buttonCreate"
         app:layout_constraintBottom_toTopOf="@+id/listViewStudent"
-        app:layout_constraintStart_toEndOf="@+id/buttonBack"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

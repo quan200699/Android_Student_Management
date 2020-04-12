@@ -1,9 +1,11 @@
 package com.example.demosqllite.activity.student;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -22,7 +24,6 @@ import java.util.List;
 public class ListStudentActivity extends AppCompatActivity {
     private ListView listViewStudent;
     private IStudentDao studentDao;
-    private ImageButton buttonBack;
     private Button buttonCreate;
 
     @Override
@@ -30,6 +31,8 @@ public class ListStudentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_student);
         init();
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
         final List<Student> students = studentDao.findAll();
         ListStudentAdapter adapter = new ListStudentAdapter(ListStudentActivity.this, R.layout.activity_student_row, students);
         listViewStudent.setAdapter(adapter);
@@ -45,20 +48,27 @@ public class ListStudentActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        buttonBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        onClickEvent(buttonCreate, CreateStudentActivity.class);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+
                 Intent intent = new Intent(ListStudentActivity.this, MainActivity.class);
                 startActivity(intent);
-            }
-        });
-        onClickEvent(buttonCreate, CreateStudentActivity.class);
+                finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void init() {
         listViewStudent = findViewById(R.id.listViewStudent);
         studentDao = new StudentDao(this);
-        buttonBack = findViewById(R.id.buttonBack);
         buttonCreate = findViewById(R.id.buttonCreateStudent);
     }
 
