@@ -1,12 +1,13 @@
 package com.example.demosqllite.activity.student;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import com.example.demosqllite.R;
 import com.example.demosqllite.activity.course.CourseActivity;
 import com.example.demosqllite.adapter.ListStudentAdapter;
+import com.example.demosqllite.model.Course;
 import com.example.demosqllite.model.Student;
 import com.example.demosqllite.sqlite.IStudentDao;
 import com.example.demosqllite.sqlite.impl.StudentDao;
@@ -23,22 +25,22 @@ import java.util.List;
 public class ListStudentByCourseActivity extends AppCompatActivity {
     private ListView listViewStudent;
     private IStudentDao studentDao;
-    private ImageButton buttonBack;
     private TextView textViewListStudent;
-    private Button buttonAddStudentToCourse;
+    private Course course;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_student_by_course);
         init();
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            final int courseId = bundle.getInt("courseId");
-            final String courseName = bundle.getString("courseName");
-            String title = textViewListStudent.getText().toString() + " " + courseName;
+            course = getCourseInfo(bundle);
+            String title = textViewListStudent.getText().toString() + " " + course.getName();
             textViewListStudent.setText(title);
-            final List<Student> students = studentDao.findAllByCourse(courseId);
+            final List<Student> students = studentDao.findAllByCourse(course.getId());
             ListStudentAdapter adapter = new ListStudentAdapter(ListStudentByCourseActivity.this, R.layout.activity_student_row, students);
             listViewStudent.setAdapter(adapter);
             listViewStudent.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -53,23 +55,34 @@ public class ListStudentByCourseActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-            buttonBack.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(ListStudentByCourseActivity.this, CourseActivity.class);
-                    intent.putExtra("courseId",courseId);
-                    intent.putExtra("courseName",courseName);
-                    startActivity(intent);
-                }
-            });
+        }
+    }
+
+    private Course getCourseInfo(Bundle bundle) {
+        int courseId = bundle.getInt("courseId");
+        String courseName = bundle.getString("courseName");
+        return new Course(courseId, courseName);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                Intent intent = new Intent(ListStudentByCourseActivity.this, CourseActivity.class);
+                intent.putExtra("courseId", course.getId());
+                intent.putExtra("courseName", course.getName());
+                startActivity(intent);
+                finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 
     private void init() {
         listViewStudent = findViewById(R.id.listViewStudent);
         studentDao = new StudentDao(this);
-        buttonBack = findViewById(R.id.buttonBack);
         textViewListStudent = findViewById(R.id.textViewListStudent);
-        buttonAddStudentToCourse = findViewById(R.id.buttonCreateStudent);
     }
 }

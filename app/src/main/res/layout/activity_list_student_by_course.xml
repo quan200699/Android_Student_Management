@@ -6,29 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".activity.student.ListStudentByCourseActivity">
 
-    <Button
-        android:id="@+id/buttonAddStudentToCourse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="228dp"
-        android:layout_marginLeft="228dp"
-        android:text="@string/buttonCreate"
-        app:layout_constraintBottom_toTopOf="@+id/listViewStudent"
-        app:layout_constraintStart_toEndOf="@+id/buttonBack"
-        app:layout_constraintTop_toBottomOf="@+id/textViewListStudent"
-        app:layout_constraintVertical_bias="0.2" />
-
-    <ImageButton
-        android:id="@+id/buttonBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/listViewStudent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/back" />
-
     <ListView
         android:id="@+id/listViewStudent"
         android:layout_width="400dp"

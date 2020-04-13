@@ -1,15 +1,16 @@
 package com.example.demosqllite.activity.course;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.demosqllite.R;
@@ -26,25 +27,19 @@ public class CourseActivity extends AppCompatActivity {
     private Button buttonDelete;
     private Button buttonEdit;
     private Button buttonListStudentByCourse;
-    private ImageButton buttonBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course);
         init();
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
         final Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             final int courseId = bundle.getInt("courseId");
             final String courseName = bundle.getString("courseName");
             editTextCourseName.setText(courseName);
-            buttonBack.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(CourseActivity.this, ListCourseActivity.class);
-                    startActivity(intent);
-                }
-            });
             buttonDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -75,9 +70,23 @@ public class CourseActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+
+                Intent intent = new Intent(CourseActivity.this, ListCourseActivity.class);
+                startActivity(intent);
+                finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     private void init() {
         editTextCourseName = findViewById(R.id.editTextCourseName);
-        buttonBack = findViewById(R.id.buttonBack);
         buttonDelete = findViewById(R.id.buttonDelete);
         buttonEdit = findViewById(R.id.buttonEdit);
         buttonListStudentByCourse = findViewById(R.id.buttonListStudentByCourse);

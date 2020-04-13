@@ -1,11 +1,13 @@
 package com.example.demosqllite.activity.student;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -34,14 +36,16 @@ public class StudentActivity extends AppCompatActivity {
     private Spinner spinnerCourse;
     private IStudentDao studentDao;
     private ICourseDao courseDao;
-    private ImageButton buttonBack;
     private Button buttonDelete;
     private Button buttonEdit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student);
         init();
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
         List<Course> courses = getAllCourses();
         List<String> courseNames = addCourseNameToList(courses);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, courseNames);
@@ -52,13 +56,6 @@ public class StudentActivity extends AppCompatActivity {
             editTextStudentPhoneNumber.setText(bundle.getString("studentPhoneNumber"));
             editTextStudentEmail.setText(bundle.getString("studentEmail"));
             spinnerCourse.setSelection(getDefaultPosition(courses, bundle.getInt("studentCourse")));
-            buttonBack.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(StudentActivity.this, ListStudentActivity.class);
-                    startActivity(intent);
-                }
-            });
             buttonDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -69,15 +66,7 @@ public class StudentActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     int id = bundle.getInt("studentId");
-                    String name = editTextStudentName.getText().toString();
-                    String phoneNumber = editTextStudentPhoneNumber.getText().toString();
-                    String email = editTextStudentEmail.getText().toString();
-                    String courseName = spinnerCourse.getSelectedItem().toString();
-                    Student student = new Student(name, phoneNumber, email);
-                    Course course = courseDao.findByName(courseName);
-                    if (course != null) {
-                        student = new Student(name, phoneNumber, email, course.getId());
-                    }
+                    Student student = getStudentInfo(bundle);
                     if (studentDao.updateById(id, student)) {
                         Toast.makeText(getApplicationContext(), MESSAGE_UPDATE_SUCCESS, Toast.LENGTH_SHORT).show();
                     } else {
@@ -86,7 +75,35 @@ public class StudentActivity extends AppCompatActivity {
                 }
             });
         }
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                Intent intent = new Intent(StudentActivity.this, ListStudentActivity.class);
+                startActivity(intent);
+                finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private Student getStudentInfo(Bundle bundle) {
+        int id = bundle.getInt("studentId");
+        String name = editTextStudentName.getText().toString();
+        String phoneNumber = editTextStudentPhoneNumber.getText().toString();
+        String email = editTextStudentEmail.getText().toString();
+        String courseName = spinnerCourse.getSelectedItem().toString();
+        Student student = new Student(name, phoneNumber, email);
+        Course course = courseDao.findByName(courseName);
+        if (course != null) {
+            student = new Student(name, phoneNumber, email, course.getId());
+        }
+        student.setId(id);
+        return student;
     }
 
     private void init() {
@@ -96,7 +113,6 @@ public class StudentActivity extends AppCompatActivity {
         spinnerCourse = findViewById(R.id.spinnerCourse);
         studentDao = new StudentDao(this);
         courseDao = new CourseDao(this);
-        buttonBack = findViewById(R.id.buttonBack);
         buttonDelete = findViewById(R.id.buttonDelete);
         buttonEdit = findViewById(R.id.buttonEdit);
     }

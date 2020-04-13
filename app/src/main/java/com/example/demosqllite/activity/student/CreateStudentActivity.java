@@ -1,9 +1,11 @@
 package com.example.demosqllite.activity.student;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -31,19 +33,15 @@ public class CreateStudentActivity extends AppCompatActivity {
     private Spinner spinnerCourse;
     private IStudentDao studentDao;
     private ICourseDao courseDao;
+    private Button buttonSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_student);
-        editTextName = findViewById(R.id.editTextName);
-        editTextPhoneNumber = findViewById(R.id.editTextPhoneNumber);
-        editTextEmail = findViewById(R.id.editTextEmail);
-        Button buttonSave = findViewById(R.id.buttonSave);
-        Button buttonBack = findViewById(R.id.buttonBack);
-        spinnerCourse = findViewById(R.id.spinnerCourse);
-        studentDao = new StudentDao(this);
-        courseDao = new CourseDao(this);
+        init();
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
         List<Course> courses = getAllCourses();
         List<String> courseNames = addCourseNameToList(courses);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, courseNames);
@@ -54,13 +52,30 @@ public class CreateStudentActivity extends AppCompatActivity {
                 createStudent();
             }
         });
-        buttonBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
                 Intent intent = new Intent(CreateStudentActivity.this, ListStudentActivity.class);
                 startActivity(intent);
-            }
-        });
+                finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void init() {
+        editTextName = findViewById(R.id.editTextName);
+        editTextPhoneNumber = findViewById(R.id.editTextPhoneNumber);
+        editTextEmail = findViewById(R.id.editTextEmail);
+        buttonSave = findViewById(R.id.buttonSave);
+        spinnerCourse = findViewById(R.id.spinnerCourse);
+        studentDao = new StudentDao(this);
+        courseDao = new CourseDao(this);
     }
 
     private List<String> addCourseNameToList(List<Course> courses) {
