@@ -5,12 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import static com.example.demosqllite.config.StaticVariable.CREATE_TABLE_COURSE;
-import static com.example.demosqllite.config.StaticVariable.CREATE_TABLE_STUDENT;
-import static com.example.demosqllite.config.StaticVariable.DATABASE_NAME;
-import static com.example.demosqllite.config.StaticVariable.DATABASE_Version;
-import static com.example.demosqllite.config.StaticVariable.DROP_TABLE_COURSE;
-import static com.example.demosqllite.config.StaticVariable.DROP_TABLE_STUDENT;
+import static com.example.demosqllite.config.StaticVariable.*;
 
 
 public class DBHelper extends SQLiteOpenHelper {
