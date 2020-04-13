@@ -95,7 +95,7 @@ public class StudentDao implements IStudentDao {
         contentValues.put(COURSE_ID, student.getCourseId());
         String[] arguments = new String[]{id + ""};
         int result = sqLiteDatabase.update(TABLE_STUDENT, contentValues, ID + "= ?", arguments);
-        return result != 0;
+        return result == 1;
     }
 
     @Override

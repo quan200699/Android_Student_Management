@@ -80,7 +80,7 @@ public class CourseDao implements ICourseDao {
         contentValues.put(NAME, course.getName());
         String[] arguments = new String[]{id + ""};
         int result = sqLiteDatabase.update(TABLE_COURSE, contentValues, "id = ?", arguments);
-        return result != 0;
+        return result == 1;
     }
 
     @Override
